@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Вайбкодинг: опишите идею, получите рабочий продукт</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--sky1:#e8f8ff;--sky2:#7fd0f5;--sky3:#2aa4e0;--ink:#0b3a5c;--muted:#2d5f80;--glass-a:rgba(255,255,255,.82);--glass-b:rgba(255,255,255,.45);--edge:rgba(255,255,255,.9);--shadow:rgba(10,80,130,.28);--grass1:#8fe05a;--grass2:#3aa31f;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--sky1:#0f4a6e;--sky2:#0a3556;--sky3:#06213a;--ink:#eaf8ff;--muted:#a9d3ea;--glass-a:rgba(40,110,160,.55);--glass-b:rgba(20,70,110,.45);--edge:rgba(160,220,255,.45);--shadow:rgba(0,0,0,.45);--grass1:#4aa832;--grass2:#1f6b14;color-scheme:dark}}
+:root[data-theme="dark"]{--sky1:#0f4a6e;--sky2:#0a3556;--sky3:#06213a;--ink:#eaf8ff;--muted:#a9d3ea;--glass-a:rgba(40,110,160,.55);--glass-b:rgba(20,70,110,.45);--edge:rgba(160,220,255,.45);--shadow:rgba(0,0,0,.45);--grass1:#4aa832;--grass2:#1f6b14;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth;height:100%}
+*{box-sizing:border-box}
+body{margin:0;min-height:100%;color:var(--ink);font:400 17px/1.6 "Open Sans","Segoe UI",Frutiger,system-ui,sans-serif;background:linear-gradient(180deg,var(--sky1) 0%,var(--sky2) 55%,var(--sky3) 100%) fixed;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+background:
+radial-gradient(circle at 30% 30%,rgba(255,255,255,.9) 0 6%,rgba(255,255,255,.15) 40%,rgba(255,255,255,.35) 70%,transparent 72%) 8% 14%/110px 110px no-repeat,
+radial-gradient(circle at 30% 30%,rgba(255,255,255,.9) 0 6%,rgba(255,255,255,.15) 40%,rgba(255,255,255,.35) 70%,transparent 72%) 92% 30%/70px 70px no-repeat,
+radial-gradient(circle at 30% 30%,rgba(255,255,255,.9) 0 6%,rgba(255,255,255,.15) 40%,rgba(255,255,255,.35) 70%,transparent 72%) 80% 78%/150px 150px no-repeat,
+radial-gradient(circle at 30% 30%,rgba(255,255,255,.9) 0 6%,rgba(255,255,255,.15) 40%,rgba(255,255,255,.35) 70%,transparent 72%) 4% 66%/50px 50px no-repeat}
+h1,h2,h3{font-family:inherit;font-weight:800;line-height:1.15;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid #fff;outline-offset:3px;box-shadow:0 0 0 6px var(--sky3)}
+.wrap{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:0 20px}
+section{padding:56px 0}
+h2{font-size:clamp(26px,5vw,36px);margin-bottom:26px;text-shadow:0 2px 0 rgba(255,255,255,.55)}
+.glass{background:linear-gradient(180deg,var(--glass-a),var(--glass-b));border:1px solid var(--edge);border-radius:24px;box-shadow:0 10px 28px var(--shadow),inset 0 1px 0 var(--edge);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.btn{position:relative;display:inline-block;overflow:hidden;color:#fff;font-weight:800;text-decoration:none;text-shadow:0 1px 2px rgba(0,60,0,.55);padding:14px 28px;border-radius:999px;border:1px solid #2d8a17;background:linear-gradient(180deg,#a6ee74 0%,#4cbb2f 50%,#35a01f 51%,#63cf3f 100%);box-shadow:0 6px 16px rgba(30,110,10,.4),inset 0 1px 0 rgba(255,255,255,.8)}
+.btn::after{content:"";position:absolute;left:6%;right:6%;top:3px;height:45%;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.65),rgba(255,255,255,0));pointer-events:none}
+.btn:hover{filter:brightness(1.07)}
+header{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.logo{font-weight:800;font-size:19px;text-decoration:none;padding:8px 18px;border-radius:999px;background:linear-gradient(180deg,var(--glass-a),var(--glass-b));border:1px solid var(--edge);box-shadow:0 4px 12px var(--shadow),inset 0 1px 0 var(--edge)}
+header a.small{font-size:15px;font-weight:600}
+.hero{padding:36px 0 60px}
+.hero h1{font-size:clamp(32px,8vw,58px);max-width:15ch;text-shadow:0 2px 0 rgba(255,255,255,.6)}
+.hero p.lead{font-size:19px;color:var(--muted);max-width:48ch;margin:20px 0 28px}
+.demo{margin-top:40px;display:grid;gap:16px}
+@media(min-width:760px){.demo{grid-template-columns:1fr 1fr}}
+.prompt,.result{padding:20px 22px;min-height:160px}
+.prompt small,.result small{display:block;color:var(--muted);font-size:14px;font-weight:600;margin-bottom:8px}
+.prompt .txt{font-size:18px;min-height:4.8em}
+.caret{display:inline-block;width:2px;height:1.1em;background:#1ba7e0;vertical-align:-3px;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.result{position:relative;overflow:hidden;color:#fff;border-radius:24px;border:1px solid rgba(255,255,255,.8);background:linear-gradient(180deg,#59c8f5 0%,#1c97dc 50%,#0f7fc4 51%,#2fb0ee 100%);box-shadow:0 10px 28px var(--shadow),inset 0 1px 0 rgba(255,255,255,.9);transition:transform .35s;text-shadow:0 1px 2px rgba(0,50,90,.45)}
+.result::after{content:"";position:absolute;left:4%;right:4%;top:6px;height:42%;border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,255,255,0));pointer-events:none}
+.result>*{position:relative;z-index:1}
+.result small{color:rgba(255,255,255,.9)}
+.result.pop{transform:scale(1.02)}
+.result b{font-size:22px;display:block;margin-bottom:6px}
+.result .bar{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.result .bar span{background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.7);border-radius:999px;padding:3px 12px;font-size:14px}
+.steps{display:grid;gap:16px;padding:0;margin:0;list-style:none;counter-reset:s}
+@media(min-width:760px){.steps{grid-template-columns:repeat(3,1fr)}}
+.steps li{counter-increment:s;padding:24px}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:42px;height:42px;border-radius:50%;color:#fff;font-weight:800;margin-bottom:14px;text-shadow:0 1px 2px rgba(0,60,0,.5);background:radial-gradient(circle at 35% 28%,#d5ffb4 0 8%,#59c93a 45%,#2f9a1f 100%);box-shadow:0 4px 10px rgba(30,110,10,.4),inset 0 -3px 6px rgba(0,60,0,.3)}
+.steps h3{font-size:18px;margin-bottom:8px}
+.steps p,.list p{margin:0;color:var(--muted)}
+.list{padding:6px 24px}
+.list div{display:grid;gap:4px;padding:18px 0;border-bottom:1px solid var(--edge)}
+.list div:last-child{border-bottom:0}
+@media(min-width:760px){.list div{grid-template-columns:260px 1fr;gap:24px}}
+.list h3{font-size:17px}
+.prices{display:grid;gap:16px}
+@media(min-width:760px){.prices{grid-template-columns:repeat(3,1fr)}}
+.plan{padding:26px;display:flex;flex-direction:column;gap:10px}
+.plan.main{border:2px solid #63cf3f;box-shadow:0 12px 30px rgba(30,110,10,.35),inset 0 1px 0 var(--edge)}
+.plan h3{font-size:18px}
+.plan .price{font-size:28px;font-weight:800}
+.plan ul{margin:0;padding-left:20px;color:var(--muted)}
+.cta{padding:48px 28px;text-align:center}
+.cta h2{margin:0 auto 14px;max-width:18ch}
+.cta p{margin:0 auto 26px;max-width:44ch;color:var(--muted)}
+footer{position:relative;z-index:1;margin-top:40px;padding:70px 20px 40px;text-align:center;color:#fff;font-weight:600;text-shadow:0 1px 2px rgba(0,60,0,.5);background:radial-gradient(120% 100% at 50% 100%,var(--grass2) 0 55%,transparent 56%),radial-gradient(90% 90% at 20% 100%,var(--grass1) 0 60%,transparent 61%)}
+:root{--cloud:rgba(255,255,255,.9)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--cloud:rgba(255,255,255,.13)}}
+:root[data-theme="dark"]{--cloud:rgba(255,255,255,.13)}
+.sky{position:absolute;top:0;left:0;right:0;height:680px;z-index:0;pointer-events:none;overflow:hidden;background:radial-gradient(circle at 88% -4%,rgba(255,255,235,.98) 0 5%,rgba(255,255,200,.55) 16%,transparent 42%),conic-gradient(from 165deg at 88% -4%,transparent 0 5deg,rgba(255,255,255,.3) 8deg,transparent 14deg,rgba(255,255,255,.22) 19deg,transparent 27deg,rgba(255,255,255,.28) 33deg,transparent 42deg)}
+.sky i{position:absolute;background:var(--cloud);border-radius:999px;filter:blur(1.5px);animation:drift 14s ease-in-out infinite alternate}
+.sky i::before,.sky i::after{content:"";position:absolute;background:var(--cloud);border-radius:50%}
+.sky i::before{width:46%;height:150%;left:14%;top:-70%}
+.sky i::after{width:34%;height:120%;left:50%;top:-45%}
+.sky .c1{top:110px;left:-30px;width:240px;height:60px}
+.sky .c2{top:300px;right:-40px;width:280px;height:70px;animation-duration:18s}
+.sky .c3{top:520px;left:12%;width:200px;height:50px;animation-duration:16s}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(46px)}}
+.sky b{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.8);background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.95) 0 7%,rgba(255,255,255,.08) 30%,rgba(110,210,255,.28) 70%,rgba(255,255,255,.75) 100%);box-shadow:inset 0 -8px 18px rgba(40,160,230,.4),0 4px 12px rgba(10,80,130,.2)}
+.glass{position:relative;isolation:isolate}
+.glass>*{position:relative;z-index:1}
+.glass::after{content:"";position:absolute;z-index:0;left:3%;right:3%;top:4px;height:40%;border-radius:22px 22px 60% 60%/22px 22px 34px 34px;background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,0));pointer-events:none}
+header{margin-top:12px;padding:10px 12px 10px 16px;border-radius:999px;background:linear-gradient(180deg,var(--glass-a),var(--glass-b));border:1px solid var(--edge);box-shadow:0 8px 22px var(--shadow),inset 0 1px 0 var(--edge);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.logo{background:none;border:0;box-shadow:none;padding:0;font-size:20px}
+header a.small{padding:6px 16px;border-radius:999px;color:#fff;text-shadow:0 1px 2px rgba(0,50,90,.5);background:linear-gradient(180deg,#59c8f5,#1c97dc 50%,#0f7fc4 51%,#2fb0ee);border:1px solid rgba(255,255,255,.8);box-shadow:inset 0 1px 0 rgba(255,255,255,.8)}
+.list h3::before{content:"";display:inline-block;width:14px;height:14px;border-radius:50%;margin-right:10px;vertical-align:-1px;background:radial-gradient(circle at 35% 30%,#fff 0 12%,#6fd6ff 40%,#1388cf 100%);box-shadow:0 2px 4px rgba(10,80,130,.4)}
+footer{padding-top:110px;background:radial-gradient(130% 100% at 50% 100%,var(--grass2) 0 52%,transparent 53%),radial-gradient(80% 100% at 15% 100%,var(--grass1) 0 58%,transparent 59%),radial-gradient(70% 90% at 90% 100%,var(--grass1) 0 56%,transparent 57%)}
+@media(prefers-reduced-motion:reduce){.sky i{animation:none}.caret{animation:none}.result{transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="sky" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><b style="width:96px;height:96px;left:5%;top:170px"></b><b style="width:54px;height:54px;left:22%;top:90px"></b><b style="width:130px;height:130px;right:6%;top:360px"></b><b style="width:40px;height:40px;right:28%;top:240px"></b></div>
+<div class="wrap">
+<header>
+  <a class="logo" href="#top">site/make</a>
+  <a class="small" href="#contact">Написать</a>
+</header>
+
+<main id="top">
+<div class="hero">
+  <h1>Опишите идею словами. Получите работающий сайт.</h1>
+  <p class="lead">Я делаю дизайн сайтов, а ещё мини-приложения и внутренние инструменты. Всё делаю сам, без ИИ. Вы говорите, что нужно, я рисую и собираю, показываю и дорабатываю. Первая версия за 1–3 дня.</p>
+  <a class="btn" href="#contact">Обсудить проект</a>
+
+  <div class="demo" aria-label="Пример: запрос и результат">
+    <div class="prompt glass"><small>Ваш запрос</small><div class="txt"><span id="typed"></span><span class="caret" aria-hidden="true"></span></div></div>
+    <div class="result" id="result" aria-live="polite"><small>Что получится</small><b id="rt">Сайт для кофейни</b><span id="rd">Меню, карта, форма заказа</span><div class="bar" id="rb"><span>готово за 2 дня</span></div></div>
+  </div>
+</div>
+
+<section>
+  <h2>Как это работает</h2>
+  <ol class="steps">
+    <li class="glass"><h3>Вы описываете</h3><p>Своими словами: что нужно, для кого, как должно выглядеть. Без технического задания.</p></li>
+    <li class="glass"><h3>Я собираю</h3><p>Делаю первую версию вручную, без ИИ, и показываю рабочую ссылку, а не макет.</p></li>
+    <li class="glass"><h3>Правим и запускаем</h3><p>Вы говорите, что поменять. Правки вносим, пока не понравится, потом публикуем.</p></li>
+  </ol>
+</section>
+
+<section>
+  <h2>Что можно сделать</h2>
+  <div class="list glass">
+    <div><h3>Дизайн сайта</h3><p>Продумаю внешний вид, цвета и шрифты под вашу идею и сразу соберу рабочую страницу.</p></div>
+    <div><h3>Лендинг и визитка</h3><p>Страница услуги, продукта или события с формой заявки.</p></div>
+    <div><h3>Мини-приложение</h3><p>Калькулятор, трекер, опросник, игра: то, что работает прямо в браузере.</p></div>
+    <div><h3>Внутренний инструмент</h3><p>Таблица, дашборд или автоматизация рутины для вашей команды.</p></div>
+    <div><h3>Прототип для проверки идеи</h3><p>Быстрая рабочая версия, чтобы показать инвесторам или первым клиентам.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Цены</h2>
+  <div class="prices">
+    <div class="plan glass"><h3>Страница</h3><div class="price">от 500 ₽</div><ul><li>Лендинг на 1 экран-5 блоков</li><li>Адаптация под телефон</li><li>Публикация по ссылке</li></ul></div>
+    <div class="plan glass main"><h3>Приложение</h3><div class="price">от 1 500 ₽</div><ul><li>Интерактивный инструмент</li><li>Несколько кругов правок</li><li>Помощь с запуском</li></ul></div>
+    <div class="plan glass"><h3>Консультация</h3><div class="price">500 ₽/час</div><ul><li>Научу делать сайты самому</li><li>Разберу ваш проект</li><li>Подскажу инструменты</li></ul></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="cta glass">
+    <h2>Расскажите, что хотите собрать</h2>
+    <p>Хватит пары предложений. Отвечу в течение дня и скажу, сколько это займёт.</p>
+    <a class="btn" href="https://t.me/qosyf">Написать в Telegram @qosyf</a>
+  </div>
+</section>
+</main>
+</div>
+<footer>© 2026 site/make</footer>
+
+<script>
+(function(){
+  var cases=[
+    {p:"Нужен сайт для небольшой кофейни: меню, адрес на карте и форма предзаказа.",t:"Сайт для кофейни",d:"Меню, карта, предзаказ",b:["готово за 2 дня","на телефоне"]},
+    {p:"Хочу калькулятор, который считает, сколько краски нужно на ремонт комнаты.",t:"Калькулятор краски",d:"Размеры комнаты → литры и стоимость",b:["готово за 1 день","работает в браузере"]},
+    {p:"Сделайте страницу записи на мой онлайн-курс по фотографии.",t:"Лендинг курса",d:"Программа, отзывы, запись",b:["готово за 2 дня","с формой заявки"]}
+  ];
+  var typed=document.getElementById("typed"),rt=document.getElementById("rt"),rd=document.getElementById("rd"),rb=document.getElementById("rb"),res=document.getElementById("result");
+  var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function show(c){rt.textContent=c.t;rd.textContent=c.d;rb.innerHTML="";c.b.forEach(function(x){var s=document.createElement("span");s.textContent=x;rb.appendChild(s)});}
+  if(reduce){typed.textContent=cases[0].p;show(cases[0]);return;}
+  var i=0;
+  function run(){
+    var c=cases[i%cases.length],n=0;typed.textContent="";
+    var iv=setInterval(function(){
+      typed.textContent=c.p.slice(0,++n);
+      if(n>=c.p.length){clearInterval(iv);show(c);res.classList.add("pop");setTimeout(function(){res.classList.remove("pop")},400);i++;setTimeout(run,3800);}
+    },32);
+  }
+  run();
+})();
+</script>
+</body>
+    </html>
